@@ -1,16 +1,44 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
-import "./layout.css"
+// styled components
+import {createGlobalStyle, ThemeProvider} from 'styled-components'
+import {normalize} from 'styled-normalize'
+
+// Components
+import Header from './Header'
+
+const darkTheme = {
+  background : '#000000',
+  color : '#ffffff',
+  red : '#ea291e'
+}
+const lightTheme = {
+  background : '#ffffff',
+  color : '#000000',
+  red : '#ea291e'
+}
+
+const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  *{
+    text-decoration : none;
+    /* cursor: none: */
+  }
+  htmL{
+    box-sizing : border-box;
+    -webkit-font-smoothing : antialiased;
+    font-size : 16px;
+  }
+  body{
+    font-family: 'Open Sans','Helvetica Neue', sans-serif;
+    background : ${props => props.theme.background};
+    color: ${props => props.theme.color};
+    overscroll-behavior: none;
+    overflow-x : hidden;
+  }
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,28 +51,12 @@ const Layout = ({ children }) => {
     }
   `)
 
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+  return( 
+    <ThemeProvider theme={lightTheme}>
+      <GlobalStyle/>
+      <Header/>
+      <main>{children}</main>
+    </ThemeProvider>
   )
 }
 

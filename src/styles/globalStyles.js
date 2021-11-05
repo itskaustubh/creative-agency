@@ -1,4 +1,27 @@
-import styled, {css} from 'styled-components'
+import styled, {css,createGlobalStyle} from 'styled-components'
+import {normalize} from 'styled-normalize'
+
+export const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  *{
+    text-decoration : none;
+    /* cursor: none; */
+  }
+  html{
+    box-sizing : border-box;
+    -webkit-font-smoothing : antialiased;
+    font-size : 16px;
+  }
+  body{
+    font-family: 'Open Sans','Helvetica Neue', sans-serif;
+    background : ${props => props.theme.background};
+    transition: background 0.4s ease-in-out;
+    color: ${props => props.theme.color};
+    overscroll-behavior: none;
+    overflow-x : hidden;
+    
+  }
+`
 
 export const Container = styled.div`
     flex-grow : 1;
@@ -54,5 +77,39 @@ export const Flex = styled.div`
             height : 0;
 
     `}
+`
 
+export const Cursor = styled.div`
+    position: absolute;
+    top:    200px;
+    left:   200px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: ${props => props.theme.red};
+    z-index: 999;
+    transform: translate(-50%,-50%);
+    transition: all 0.3s ease-in-out;
+    transition-property : width, height, border,background;
+    will-change: width, height, border, transform,background;
+    pointer-events: none;
+
+    &.pointer{
+        background: none;
+        height: 30px;
+        width: 30px;
+        border: 2px solid ${props => props.theme.red};
+    }
+    
+    &.hovered{
+        background: none;
+        height: 30px;
+        width: 30px;
+        border: 2px solid ${props => props.theme.color};
+    }
+
+    &.melt{
+        width: 0;
+        height: 0;
+    }
 `

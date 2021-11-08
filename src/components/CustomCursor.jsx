@@ -5,7 +5,7 @@ import {useGlobalStateContext} from '../context/globalContext'
 
 const CustomCursor = () => {
 
-    const {cursorType: cType } = useGlobalStateContext()
+    const {cursorType: cType, isHomePage } = useGlobalStateContext()
     const [mouseCords, setMouseCords] = useState({
         top : '500px', left : '200px'
     })
@@ -27,7 +27,7 @@ const CustomCursor = () => {
     return (
         <div>
             <Cursor style={mouseCords} 
-                className={cType}/>
+                className={cType} isHomePage={isHomePage}/>
         </div>
     )
 }

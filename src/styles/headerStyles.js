@@ -15,18 +15,20 @@ export const Logo = styled.div`
     a{
         font-size : 1.8rem;
         font-weight : 800;
-        color : ${props => props.theme.color};
+        color : ${props => props.theme.current.color};
         letter-spacing : -1px;
     }
     span{
         height : 12px;
         width : 12px;
-        background : ${props => props.theme.red};
+        background: ${props => props.isHomePage? 
+                                props.theme.current.red : props.theme.anti.color};
         margin : 0 4px;
         border-radius : 100%;
         display : inline-block;
         position : relative;
         bottom : 4px;
+        transition: all 0.3s ease-in-out; 
     }
 `
 
@@ -38,14 +40,16 @@ export const Menu = styled.div`
         background : none;
         outline : none;
 
-        .menu-div{ 
+        .menu-div{  
             span{
                 transition: all 0.3s ease-in-out; 
             }
         }
         .menu-div.melt{
             span{
-                background: ${props => props.theme.red};
+                background: ${props => props.isHomePage? 
+                                props.theme.current.red : props.theme.anti.color};
+                /* background: ${props => props.theme.current.red}; */
             }
         }
     }
@@ -53,7 +57,7 @@ export const Menu = styled.div`
         width : 36px;
         height : 8px;
         display : block;
-        background : ${props => props.theme.color};
+        background : ${props => props.theme.current.color};
         margin : 8px;
     }
 `

@@ -35,7 +35,7 @@ const Header = () => {
         >
             <Container>
                 <Flex spaceBetween noHeight>
-                    <Logo  >
+                    <Logo  isHomePage={isHomePage}>
                         <Link to='/' onMouseEnter={() => setCursor('pointer')}
                           onMouseLeave={setCursor}>ICEB</Link>
                         <span onClick={toggleTheme}
@@ -44,7 +44,7 @@ const Header = () => {
                         <Link to='/' onMouseEnter={() => setCursor('pointer')}
                           onMouseLeave={setCursor}>X</Link>
                     </Logo>
-                    <Menu onClick={onMenuClick}>
+                    <Menu onClick={onMenuClick} isHomePage={isHomePage}>
                         <button>
                             <div className={`${cursorType === 'melt'? 'melt':null} menu-div`} onMouseEnter={() => setCursor('melt')}
                                 onMouseLeave={setCursor}>

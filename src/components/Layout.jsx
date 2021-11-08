@@ -2,28 +2,43 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import CustomCursor from "./CustomCursor"
-import {GlobalStyle} from '../styles/globalStyles'
+import { GlobalStyle } from "../styles/globalStyles"
 
 // styled components
-import {ThemeProvider} from 'styled-components'
+import { ThemeProvider } from "styled-components"
 
 // Components
-import Header from './Header'
+import Header from "./Header"
 
-// context  
-import {useGlobalStateContext} from '../context/globalContext'
+// context
+import { useGlobalStateContext } from "../context/globalContext"
+
+// gatsby hates randomness
+// https://spectrum.chat/gatsby-js/general/random-value-at-build-time~0dfc465a-c52a-45de-97e3-f9380a1c0cf6
+// const pastelColors = [
+//   'aquamarine', 'blueviolet', 'coral', 'cornflowerblue','lightcoral',
+//   'lightpink','lightsalmon','lightseagreen','lightpink','lightseagreen',
+//   'mediumslateblue','mediumturquoise','palevioletred','tomato'
+// ]
+// const randomPastelColor = pastelColors[Math.round(Math.random() * pastelColors.length)]
+
+const universalTheme = {
+  red: "crimson",
+}
 
 const darkTheme = {
-  background : '#000',
-  color : '#ffffff',
-  red : '#ea291e'
+  name: "dark",
+  background: "#000",
+  color: "#ffffff",
+
+  ...universalTheme,
 }
 const lightTheme = {
-  background : '#fff',
-  color : '#000',
-  red : '#ea291e'
+  name: "light",
+  background: "#fff",
+  color: "#000",
+  ...universalTheme,
 }
-
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,16 +50,21 @@ const Layout = ({ children }) => {
       }
     }
   `)
-  const {currentTheme} = useGlobalStateContext()
+  const { currentTheme } = useGlobalStateContext()
   console.log(currentTheme)
 
-  return( 
-      <ThemeProvider theme={currentTheme === "dark"? darkTheme: lightTheme}>
-        <GlobalStyle/>
-        <CustomCursor/>
-        <Header/>
-        <main>{children}</main>
-      </ThemeProvider>
+  return (
+    <ThemeProvider
+      theme={{
+        current: currentTheme === "dark" ? darkTheme : lightTheme,
+        anti: currentTheme === "dark" ? lightTheme : darkTheme,
+      }}
+    >
+      <GlobalStyle />
+      <CustomCursor />
+      <Header />
+      <main>{children}</main>
+    </ThemeProvider>
   )
 }
 

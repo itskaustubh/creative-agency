@@ -6,6 +6,8 @@ export const GlobalStyle = createGlobalStyle`
   *{
     text-decoration : none;
     cursor: none;
+          margin: 0;
+      padding: 0;
   }
   html{
     box-sizing : border-box;
@@ -20,9 +22,16 @@ export const GlobalStyle = createGlobalStyle`
     overscroll-behavior: none;
     overflow-x : hidden;
   }
-  h1,h2,h2,h3,h4,h5,h6{
-      margin: 0;
-      padding: 0;
+
+
+  p,li{
+    font-size: 1.1.rem;
+    font-weight: bold;
+  }
+
+  ul{
+    list-style: none;
+
   }
 `
 

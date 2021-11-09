@@ -53,3 +53,97 @@ export const ContentText = styled(motion.h2)`
   width: 50%;
   min-width: 270px;
 `
+
+// ABOUT STYLES
+
+export const AboutContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 7rem 0 7rem 0;
+`
+
+export const AboutText = styled.div`
+  flex: 6;
+  justify-content: center;
+  .about-text-head,
+  .about-text-foot {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    p {
+      width: 40rem;
+    }
+  }
+
+  .about-text-head {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .about-text-foot {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+`
+
+export const AboutAccordion = styled.div`
+  flex: 2;
+
+  .accordion-head {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .service {
+  }
+`
+export const ServiceHead = styled.div`
+  display: flex;
+  font-size: 1.2rem;
+  color: ${props =>
+    props.expand ? props.theme.current.red : props.theme.current.color};
+
+  .arrow {
+    position: relative;
+
+    span {
+      width: 10px;
+      height: 5px;
+      display: block;
+      background: ${props =>
+        props.expand ? props.theme.current.red : props.theme.current.color};
+      margin-top: 10px;
+      position: absolute;
+      top: 0;
+      transition: all 0.4s ease-in-out;
+    }
+
+    #span-one {
+      top: 0;
+      transform: ${props => (props.expand ? "rotate(45deg)" : "rotate(0deg)")};
+    }
+
+    #span-two {
+      left: 4px;
+      transform: ${props => (props.expand ? "rotate(-45deg)" : "rotate(0deg)")};
+    }
+  }
+
+  .service-title {
+    margin-left: 20px;
+    transition: all 0.4s ease-in-out;
+  }
+`
+
+export const ServiceList = styled.div`
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-left: 5px;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+
+  // collapse expand transition
+  max-height: ${props => (props.expand ? "600px" : "0px")};
+  opacity: ${props => (props.expand ? "1" : "0")};
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+`

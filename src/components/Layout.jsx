@@ -20,7 +20,7 @@ import { useGlobalStateContext } from "../context/globalContext"
 //   'lightpink','lightsalmon','lightseagreen','lightpink','lightseagreen',
 //   'mediumslateblue','mediumturquoise','palevioletred','tomato'
 // ]
-// const randomPastelColor = pastelColors[Math.round(Math.random() * pastelColors.length)]
+// const randomPrimaryColor = pastelColors[Math.round(Math.random() * pastelColors.length)]
 
 const universalTheme = {
   red: "crimson",
@@ -30,7 +30,6 @@ const darkTheme = {
   name: "dark",
   background: "#000",
   color: "#ffffff",
-
   ...universalTheme,
 }
 const lightTheme = {

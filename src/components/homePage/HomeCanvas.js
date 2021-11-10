@@ -20,6 +20,12 @@ const HomeCanvas = () => {
   let eraseCords = []
   let index = 0
 
+  const addBlackCanvasRect = ctx => {
+    ctx.globalCompositeOperation = "source-over"
+    ctx.fillStyle = cvsColor
+    ctx.fillRect(0, 0, cvs.width, cvs.height)
+  }
+
   const draw = evt => {
     // console.log(cvs,ctx)
     ctx.globalCompositeOperation = "destination-out"
@@ -71,13 +77,10 @@ const HomeCanvas = () => {
     // cvs.width = window.innerWidth
     // cvs.height = window.innerHeight + 1
 
-    ctx.globalCompositeOperation = "source-over"
-    ctx.fillStyle = cvsColor
-    ctx.fillRect(0, 0, cvs.width, cvs.height)
+    // addBlackCanvasRect(ctx)
+    // autoEraser(ctx)
+    // cvs.addEventListener("mousemove", draw)
 
-    cvs.addEventListener("mousemove", draw)
-
-    autoEraser(ctx)
     return () => {
       cvs.removeEventListener("mousemove", draw)
       cancelAnimationFrame(eraseLoop)

@@ -4,11 +4,11 @@ import React, { createContext, useReducer, useContext } from "react"
 const GlobalStateContext = createContext()
 const GlobalDispatchContext = createContext()
 
-const initialState = { 
+const cursorStyles = ["hovered", "pointer", "melt"]
+const initialState = {
   isHomePage: true,
-  currentTheme: 'dark',
+  currentTheme: "dark",
   cursorType: null,
-  cursorStyles: ['hovered','pointer','melt']
 }
 
 //Reducer
@@ -21,14 +21,15 @@ const globalReducer = (state, action) => {
       }
     }
     case "CURSOR_TYPE": {
+      const cType = cursorStyles.includes(action.value) ? action.value : null
       return {
-        ...state, 
-        cursorType: action.value,
+        ...state,
+        cursorType: cType,
       }
     }
     case "IS_HOME_PAGE": {
       return {
-        ...state, 
+        ...state,
         isHomePage: action.value,
       }
     }
@@ -54,13 +55,8 @@ const GlobalProvider = ({ children }) => {
   )
 }
 
-
 //custom hooks for when we want to use our global state
 const useGlobalStateContext = () => useContext(GlobalStateContext)
 const useGlobalDispatchContext = () => useContext(GlobalDispatchContext)
 
-export {
-  GlobalProvider,
-  useGlobalStateContext,
-  useGlobalDispatchContext
-}
+export { GlobalProvider, useGlobalStateContext, useGlobalDispatchContext }

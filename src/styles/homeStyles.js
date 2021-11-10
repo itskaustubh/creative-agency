@@ -102,6 +102,10 @@ export const ServiceHead = styled.div`
   color: ${props =>
     props.expand ? props.theme.current.red : props.theme.current.color};
 
+  &:hover {
+    color: ${props => props.theme.current.red};
+  }
+
   .arrow {
     position: relative;
 

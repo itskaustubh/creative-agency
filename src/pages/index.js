@@ -4,6 +4,7 @@ import HomeCanvas from "../components/homePage/HomeCanvas"
 import HomeContent from "../components/homePage/HomeContent"
 import Projects from "../components/Projects"
 import About from "../components/homePage/About"
+import Footer from "../components/Footer"
 
 const IndexPage = props => {
   return (
@@ -12,6 +13,7 @@ const IndexPage = props => {
       <HomeContent />
       <Projects />
       <About />
+      <Footer />
     </Layout>
   )
 }

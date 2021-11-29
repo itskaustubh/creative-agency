@@ -1,5 +1,6 @@
 import styled, { css, createGlobalStyle } from "styled-components"
 import { normalize } from "styled-normalize"
+import { Link } from "gatsby"
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -32,6 +33,22 @@ export const GlobalStyle = createGlobalStyle`
   ul{
     list-style: none;
 
+  }
+`
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${props =>
+    props.theme.current.background === "#000" ? "#fff" : "#000"};
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+    color: ${props =>
+      props.theme.current.background === "#000" ? "#fff" : "#000"};
   }
 `
 

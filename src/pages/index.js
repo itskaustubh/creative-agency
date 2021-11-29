@@ -5,10 +5,12 @@ import HomeContent from "../components/homePage/HomeContent"
 import Projects from "../components/Projects"
 import About from "../components/homePage/About"
 import Footer from "../components/Footer"
+import Seo from "../components/seo"
 
 const IndexPage = props => {
   return (
     <Layout>
+      <Seo title="Home" />
       <HomeCanvas />
       <HomeContent />
       <Projects />

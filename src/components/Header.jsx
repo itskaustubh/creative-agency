@@ -65,7 +65,7 @@ const Header = () => {
           <Menu onClick={onMenuClick} isHomePage={isHomePage}>
             <button>
               <div
-                class="hamburger"
+                className="hamburger"
                 onMouseEnter={() => setCursor("melt")}
                 onMouseLeave={setCursor}
               >

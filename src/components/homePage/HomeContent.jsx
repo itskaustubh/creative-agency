@@ -30,7 +30,12 @@ const HomeContent = () => {
             y: 0,
             transition: { duration: 0.6, ease: [0.6, 0.05, -0.01, 0.9] },
           },
+          exit: {
+            opacity: 0,
+            transition: { duration: 0.2 },
+          },
         }}
+        exit="exit"
       >
         Great stories don’t just happen— they need to be uncovered. And we dig
         deep to discover the great stories that lie just below the surface. Dirt

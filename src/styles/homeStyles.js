@@ -6,7 +6,7 @@ export const Banner = styled.div`
   width: 100%;
   /* background: lemonchiffon; */
 `
-export const Video = styled.div`
+export const Video = styled(motion.div)`
   height: 100vh;
   width: 100%;
   /* background: pink; */

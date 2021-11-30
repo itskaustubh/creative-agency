@@ -6,7 +6,7 @@ import {
 } from "../context/globalContext"
 
 // styled components
-import { HeaderNav, Logo, Menu } from "../styles/headerStyles"
+import { HeaderNav, Logo, Menu, JumpToProjects } from "../styles/headerStyles"
 import { Container, Flex } from "../styles/globalStyles"
 
 const Header = () => {
@@ -62,8 +62,8 @@ const Header = () => {
               X
             </Link>
           </Logo>
-          <Menu onClick={onMenuClick} isHomePage={isHomePage}>
-            <button>
+          {/* <Menu onClick={onMenuClick} isHomePage={isHomePage}> */}
+          {/* <button>
               <div
                 className="hamburger"
                 onMouseEnter={() => setCursor("melt")}
@@ -72,8 +72,14 @@ const Header = () => {
                 <span></span>
                 <span></span>
               </div>
-            </button>
-          </Menu>
+            </button> */}
+          {/* </Menu> */}
+          {/* <JumpToProjects
+            onMouseEnter={() => setCursor("melt")}
+            onMouseLeave={setCursor}
+          >
+            <p class="nav-item">PROJECTS</p>
+          </JumpToProjects> */}
         </Flex>
       </Container>
     </HeaderNav>

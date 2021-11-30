@@ -1,42 +1,38 @@
 // https://stackoverflow.com/a/55757176 (see comments)
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../../components/Layout"
 import Seo from "../../components/seo"
-import { Video } from "../../styles/homeStyles"
+import ProjectVideo from "../../components/projectPage/ProjectVideo"
+import ProjectInfo from "../../components/projectPage/ProjectInfo"
+import ProjectFooter from "../../components/projectPage/ProjectFooter"
+import { videoList } from "../../content/videoList"
 
 const IdPage = props => {
-  const videoPath =
-    "http://" +
-    props.location.host +
-    require("../../assets/video/" + props.location.state.fname).default
-  console.log(videoPath)
+  console.log(props)
+  let [video, setVideo] = useState(null)
+  let [location, setLocation] = useState(null)
 
-  const onVideoLoad = () => {
-    console.log("video loaded")
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
-  console.log(props)
+  useEffect(() => {
+    setVideo(videoList.filter(v => v.path === props.params.id)[0])
+    setLocation(props.location)
+    // pageTitle = capitalizeFirstLetter(video.title)
+    return () => {}
+  }, [])
+
   return (
     <Layout>
-      <Seo title="Project" />
-      <Video
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 1.2,
-          ease: [0.6, 0.05, -0.01, 0.9],
-        }}
-      >
-        <video
-          onLoadedData={onVideoLoad}
-          src={videoPath}
-          autoPlay
-          loop
-          muted
-        ></video>
-      </Video>
-
-      {/* <h1>{props.id}</h1> */}
+      <Seo title="Projects" />
+      {location && video && (
+        <>
+          <ProjectVideo location={location} video={video} />
+          <ProjectInfo />
+          <ProjectFooter location={location} video={video} />
+        </>
+      )}
     </Layout>
   )
 }

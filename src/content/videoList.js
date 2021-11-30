@@ -1,31 +1,31 @@
 export const videoList = [
   {
     id: 0,
-    title: "not humble",
+    title: "Not Humble",
     path: "not-humble",
     fname: "featured-video.mp4",
   },
   {
     id: 1,
-    title: "bleeping easy",
+    title: "Bleeping Easy",
     path: "bleeping-easy",
     fname: "easy.mp4",
   },
   {
     id: 2,
-    title: "make it zero",
+    title: "Make It Zero",
     path: "make-it-zero",
     fname: "make-it-zero.mp4",
   },
   {
     id: 3,
-    title: "it takes an island",
+    title: "It Takes An Island",
     path: "it-takes-an-island",
     fname: "it-takes-an-island.mp4",
   },
   {
     id: 4,
-    title: "50 beaches",
+    title: "50 Beaches",
     path: "50-beaches",
     fname: "50-beaches.mp4",
   },

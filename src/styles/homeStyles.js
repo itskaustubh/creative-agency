@@ -56,7 +56,7 @@ export const ContentText = styled(motion.h2)`
 
 // ABOUT STYLES
 
-export const AboutContainer = styled.div`
+export const AboutContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   margin: 7rem 0 7rem 0;
@@ -149,5 +149,5 @@ export const ServiceList = styled.div`
   max-height: ${props => (props.expand ? "600px" : "0px")};
   opacity: ${props => (props.expand ? "1" : "0")};
   overflow: hidden;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.6s ease-in-out;
 `

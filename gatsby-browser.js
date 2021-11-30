@@ -16,17 +16,22 @@ export const wrapPageElement = ({ element }) => {
 }
 
 export const shouldUpdateScroll = ({
+  prevRouterProps,
   routerProps: { location },
   getSavedScrollPosition,
 }) => {
   // transition duration from `layout.js` * 1000 to get time in ms
 
   // * 2 for exit + enter animation
+  const prevPathname =
+    prevRouterProps !== undefined
+      ? prevRouterProps.location.pathname
+      : undefined
 
   const TRANSITION_DELAY = 1.2 * 1000 * 2
 
   console.log(location)
-  console.log(getSavedScrollPosition(location))
+  console.log(prevPathname)
 
   // if it's a "normal" route
 
@@ -38,13 +43,34 @@ export const shouldUpdateScroll = ({
   else {
     const savedPosition = getSavedScrollPosition(location) || [0, 0]
 
-    if (location.pathname === "/") {
-      window.setTimeout(() => window.scrollTo(...savedPosition), 10)
-    } else {
-      window.setTimeout(
-        () => window.scrollTo(...savedPosition),
-        TRANSITION_DELAY
-      )
+    const projectRegex = /\/project\/.*/
+
+    switch (true) {
+      case location.pathname === "/":
+        window.setTimeout(() => window.scrollTo(...savedPosition), 10)
+        break
+      case projectRegex.test(location.pathname):
+        console.log(typeof prevPathname)
+        console.log(projectRegex)
+        const prevPageisProjectPage = projectRegex.test(prevPathname)
+        console.log(prevPathname, prevPageisProjectPage)
+        if (prevPageisProjectPage) {
+          console.log("previous page was a project page")
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+        } else {
+          window.setTimeout(
+            () => window.scrollTo({ top: 0, left: 0 }),
+            TRANSITION_DELAY / 2
+          )
+        }
+
+        break
+      default:
+        window.setTimeout(
+          () => window.scrollTo(...savedPosition),
+          TRANSITION_DELAY
+        )
+        break
     }
   }
 

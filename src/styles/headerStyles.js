@@ -54,3 +54,14 @@ export const Menu = styled.div`
     margin: 8px;
   }
 `
+
+export const JumpToProjects = styled.div`
+  transition: all 0.4s ease-in-out;
+
+  color: ${props =>
+    props.expand ? props.theme.current.red : props.theme.current.color};
+
+  &:hover {
+    color: ${props => props.theme.current.red};
+  }
+`

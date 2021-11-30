@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
   AboutContainer,
   AboutText,
@@ -8,8 +8,24 @@ import {
 } from "../../styles/homeStyles"
 import { serviceList } from "../../content/videoList"
 
+import { useInView } from "react-intersection-observer"
+import { useAnimation } from "framer-motion"
+
 const About = () => {
-  const [shouldExpand, setShouldExpand] = useState(-1)
+  const [shouldExpand, setShouldExpand] = useState(0)
+
+  const animation = useAnimation()
+  const [aboutRef, isInView] = useInView({
+    triggerOnce: true,
+    rootMargin: "-200px",
+  })
+
+  useEffect(() => {
+    if (isInView) {
+      console.log("in view!")
+      animation.start("visible")
+    }
+  }, [isInView])
 
   const toggleExpand = id => {
     console.log(id)
@@ -17,11 +33,28 @@ const About = () => {
   }
 
   return (
-    <AboutContainer>
+    <AboutContainer
+      ref={aboutRef}
+      animate={animation}
+      initial="hidden"
+      variants={{
+        hidden: { opacity: 0, y: -150 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: [0.6, 0.05, -0.01, 0.9] },
+        },
+        exit: {
+          opacity: 0,
+          transition: { duration: 0.2 },
+        },
+      }}
+      exit="exit"
+    >
       <AboutText>
         <div className="about-text-head">
           <p>
-            Furrow is an integrated, full-service creative studio offering video
+            Icebox is an integrated, full-service creative studio offering video
             production, creative development, and post-production services.
           </p>
         </div>

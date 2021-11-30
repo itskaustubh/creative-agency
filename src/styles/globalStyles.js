@@ -34,6 +34,11 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
 
   }
+
+  .nav-item{
+      font-size: 1.8rem;
+      font-weight: 800;
+  }
 `
 
 export const StyledLink = styled(Link)`

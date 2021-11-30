@@ -1,0 +1,10 @@
+{
+  "main.js": "render-page.js",
+  "render-page.js.map": "render-page.js.map",
+  "static/50-beaches.mp4": "static/50-beaches-53ac106253e2ed2fdc0e8a58810bc88e.mp4",
+  "static/banner.mp4": "static/banner-ec82f4649eb121a9949378671b8de45b.mp4",
+  "static/easy.mp4": "static/easy-ec628f9de5c6897648afb413b4c4ee2a.mp4",
+  "static/featured-video.mp4": "static/featured-video-ae75c14f4dd182b85e17ad675e107208.mp4",
+  "static/it-takes-an-island.mp4": "static/it-takes-an-island-688a64a001f80435d84d80ea88610038.mp4",
+  "static/make-it-zero.mp4": "static/make-it-zero-46f203b6699f2af3cc8cfd4610d85edc.mp4"
+}

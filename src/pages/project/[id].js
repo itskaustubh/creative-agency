@@ -21,7 +21,7 @@ const IdPage = props => {
     setLocation(props.location)
     // pageTitle = capitalizeFirstLetter(video.title)
     return () => {}
-  }, [])
+  }, [props])
 
   return (
     <Layout>

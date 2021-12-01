@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { motion } from "framer-motion"
 
-export const Banner = styled.div`
+export const Banner = styled(motion.div)`
   height: 100vh;
   width: 100%;
   /* background: lemonchiffon; */

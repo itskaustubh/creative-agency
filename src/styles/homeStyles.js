@@ -60,18 +60,24 @@ export const AboutContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   margin: 7rem 0 7rem 0;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const AboutText = styled.div`
   flex: 6;
   justify-content: center;
+  margin: 0 50px;
   .about-text-head,
   .about-text-foot {
     display: flex;
     justify-content: center;
     margin-bottom: 1.5rem;
     p {
-      width: 40rem;
+      max-width: 40rem;
     }
   }
 
@@ -88,6 +94,10 @@ export const AboutText = styled.div`
 export const AboutAccordion = styled.div`
   flex: 2;
 
+  @media (max-width: 600px) {
+    text-align: center;
+  }
+
   .accordion-head {
     font-size: 1.8rem;
     font-weight: bold;
@@ -101,6 +111,10 @@ export const ServiceHead = styled.div`
   font-size: 1.2rem;
   color: ${props =>
     props.expand ? props.theme.current.red : props.theme.current.color};
+
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
 
   &:hover {
     color: ${props => props.theme.current.red};

@@ -34,6 +34,10 @@ export const ProjectLeft = styled(motion.div)`
     white-space: nowrap;
     margin-right: -200px;
 
+    @media (max-width: 600px) {
+      margin-right: -100px;
+    }
+
     ul {
       position: relative;
       list-style: none;
